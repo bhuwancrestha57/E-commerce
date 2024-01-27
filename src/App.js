@@ -96,7 +96,9 @@ const MyApp = () => {
           <DatePicker />
         </Form.Item>
 
-        <Button htmlType="submit">From Submit</Button>
+        <Button type="primary" htmlType="submit">
+          From Submit
+        </Button>
       </Form>
     </div>
   );

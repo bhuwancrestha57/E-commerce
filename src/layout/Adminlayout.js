@@ -5,12 +5,14 @@ import {
   NotificationOutlined,
   UserOutlined,
 } from "@ant-design/icons";
-import { Breadcrumb, Layout, Menu, theme } from "antd";
+import { Layout, Menu, theme } from "antd";
+import MainHeader from "./header";
 const { Header, Content, Footer, Sider } = Layout;
 const items1 = ["1", "2", "3"].map((key) => ({
   key,
   label: `nav ${key}`,
 }));
+console.log("item", items1); //``means String string and java script written by $ sign
 const items2 = [UserOutlined, LaptopOutlined, NotificationOutlined].map(
   (icon, index) => {
     const key = String(index + 1);
@@ -37,38 +39,14 @@ const Adminlayout = () => {
     <div>
       <div>
         <Layout>
-          <Header
-            style={{
-              display: "flex",
-              alignItems: "center",
-            }}
-          >
-            <div className="demo-logo" />
-            <Menu
-              theme="dark"
-              mode="horizontal"
-              defaultSelectedKeys={["2"]}
-              items={items1}
-              style={{
-                flex: 1,
-                minWidth: 0,
-              }}
-            />
+          <Header style={{ color: "white" }}>
+            <MainHeader />
           </Header>
           <Content
             style={{
               padding: "0 48px",
             }}
           >
-            <Breadcrumb
-              style={{
-                margin: "16px 0",
-              }}
-            >
-              <Breadcrumb.Item>Home</Breadcrumb.Item>
-              <Breadcrumb.Item>List</Breadcrumb.Item>
-              <Breadcrumb.Item>App</Breadcrumb.Item>
-            </Breadcrumb>
             <Layout
               style={{
                 padding: "24px 0",
@@ -76,19 +54,12 @@ const Adminlayout = () => {
                 borderRadius: borderRadiusLG,
               }}
             >
-              <Sider
-                style={{
-                  background: colorBgContainer,
-                }}
-                width={200}
-              >
+              <Sider style={{ background: colorBgContainer }} width={200}>
                 <Menu
                   mode="inline"
                   defaultSelectedKeys={["1"]}
                   defaultOpenKeys={["sub1"]}
-                  style={{
-                    height: "100%",
-                  }}
+                  style={{ height: "100%" }}
                   items={items2}
                 />
               </Sider>
