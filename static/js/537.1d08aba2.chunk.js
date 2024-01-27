@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkecommerce_site=self.webpackChunkecommerce_site||[]).push([[537],{537:(e,s,c)=>{c.r(s),c.d(s,{default:()=>i});c(2791);var d=c(184);const i=()=>(0,d.jsx)("div",{children:(0,d.jsx)("div",{children:" Admin Dashboard"})})}}]);
+//# sourceMappingURL=537.1d08aba2.chunk.js.map
