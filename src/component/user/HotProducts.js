@@ -4,7 +4,7 @@ import { HotproductData } from "../../utlis/items";
 
 const HotProducts = () => {
   return (
-    <div style={{ backgroundColor: "#f5f5f5", paddingBottom: "20px" }}>
+    <div>
       <UserItems data={HotproductData} title="Hot Products" />
     </div>
   );

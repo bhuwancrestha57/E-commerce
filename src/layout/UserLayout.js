@@ -11,7 +11,7 @@ const UserLayout = () => {
     <div>
       <div>
         <Layout>
-          <Header style={{ color: "white" }}>
+          <Header className="">
             <MainHeader />
           </Header>
           <Content

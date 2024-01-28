@@ -11,12 +11,9 @@ const UserItems = ({ data, title }) => {
   };
   return (
     <div style={{ paddingLeft: "25px" }}>
-      <div>
-        <h2>{title}</h2>
-      </div>
-      <div
-        style={{ display: "flex", justifyContent: "flex-start", gap: "25px" }}
-      >
+      <div className="text-xl font-bold p-2">{title}</div>
+
+      <div className="flex justify-start gap-10">
         {data?.map((item) => (
           <div key={item.id} onClick={() => handleClick(item)}>
             <Card
@@ -32,7 +29,7 @@ const UserItems = ({ data, title }) => {
               <div>Price:{item.price}</div>
               <div>Brand:{item.brand}</div>
               <div>
-                <Button type="primary">Add to Cart</Button>
+                <Button>Add to Cart</Button>
               </div>
             </Card>
           </div>

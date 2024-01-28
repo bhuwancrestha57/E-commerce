@@ -6,17 +6,10 @@ import { LockOutlined, UserOutlined } from "@ant-design/icons";
 
 const SignUp = () => {
   return (
-    <div
-      style={{
-        width: "500px",
-        height: "auto",
-        margin: "auto",
-        paddingTop: "30px",
-      }}
-    >
-      <Card style={{ opacity: "0.8", backgroundColor: "eae5e4" }}>
+    <div className="w-96 h-auto m-auto pt-20">
+      <Card className="opacity-80 bg-white">
         <div>
-          <div style={{ textAlign: "center" }}>
+          <div className="text-center font-bold text-xl pb-2.5">
             <h3>Sign up</h3>
           </div>
           <div>
@@ -95,9 +88,7 @@ const SignUp = () => {
                 />
               </Form.Item>
 
-              <Button type="primary" htmlType="submit">
-                Create Account
-              </Button>
+              <Button htmlType="submit">Create Account</Button>
             </Form>
             <div>
               Already have an account? <Link to="/auth/login">Login</Link>

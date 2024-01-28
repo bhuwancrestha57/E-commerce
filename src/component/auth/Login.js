@@ -5,18 +5,11 @@ import { Link } from "react-router-dom";
 
 const Login = () => {
   return (
-    <div
-      style={{
-        width: "500px",
-        height: "auto",
-        margin: "auto",
-        paddingTop: "30px",
-      }}
-    >
-      <Card style={{ opacity: "0.8", backgroundColor: "eae5e4" }}>
+    <div className="w-96 h-auto m-auto pt-20">
+      <Card className="opacity-80 bg-white">
         <div>
-          <div style={{ textAlign: "center" }}>
-            <h3>Sign In</h3>
+          <div className="text-center font-bold text-xl pb-2.5">
+            <h3>Login</h3>
           </div>
           <Form layout="vertical">
             <Form.Item
@@ -45,9 +38,7 @@ const Login = () => {
               <Input.Password placeholder="Password" />
             </Form.Item>
 
-            <Button type="primary" htmlType="submit">
-              Login
-            </Button>
+            <Button htmlType="submit">Login</Button>
           </Form>
           <div>
             Don't have an account? <Link to="/auth/signup">Sign Up</Link>

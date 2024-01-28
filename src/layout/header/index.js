@@ -11,13 +11,7 @@ const Index = () => {
     navigate(e);
   };
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "space-between",
-        color: "white",
-      }}
-    >
+    <div className="flex justify-between">
       <div>
         <Link to="/">
           <img
@@ -31,22 +25,23 @@ const Index = () => {
           />
         </Link>
       </div>
-      <div style={{ display: "flex", gap: "30px" }}>
+
+      <div className="flex gap-20">
         {HeaderItem?.map((item) => (
           <div
             key={item.link}
-            style={{ color: "white", fontWeight: "bold" }}
+            className="text-white font-bold"
             onClick={() => handleClick(item.link)}
           >
             {item.name}
           </div>
         ))}
       </div>
-      <div style={{ display: "flex", gap: "20px" }}>
+      <div className="flex gap-5">
         {Auth?.map((item) => (
           <div
             key={item.link}
-            style={{ color: "white", fontWeight: "bold" }}
+            className="text-white font-bold"
             onClick={() => handleClick(item.link)}
           >
             {item.name}
