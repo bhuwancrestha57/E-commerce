@@ -5,12 +5,15 @@ import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import { RouterProvider } from "react-router-dom";
 import { Routers } from "./router";
+import { AppContextProvider } from "./ContextApi";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <React.Suspense fallback={"Loading"}>
-      <RouterProvider router={Routers} />
+      <AppContextProvider>
+        <RouterProvider router={Routers} />
+      </AppContextProvider>
     </React.Suspense>
   </React.StrictMode>
 );

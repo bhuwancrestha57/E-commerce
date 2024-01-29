@@ -1,13 +1,16 @@
 import { Button, Card } from "antd";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useAppContext } from "../../ContextApi";
 
 const UserItems = ({ data, title }) => {
-  console.log("data", data, title);
+  const { updateState } = useAppContext();
   const navigate = useNavigate();
   const handleClick = (item) => {
+    updateState(item);
     navigate(`/userdetail/${item.id}`);
-    localStorage.setItem("userdetail", JSON.stringify(item));
+
+    // localStorage.setItem("userdetail", JSON.stringify(item));
   };
   return (
     <div style={{ paddingLeft: "25px" }}>
