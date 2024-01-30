@@ -6,7 +6,8 @@ import {
   UserOutlined,
 } from "@ant-design/icons";
 import { Layout, Menu, theme } from "antd";
-import MainHeader from "./header";
+
+import AdminHeader from "./header/AdminHeader";
 const { Header, Content, Footer, Sider } = Layout;
 const items1 = ["1", "2", "3"].map((key) => ({
   key,
@@ -40,7 +41,7 @@ const Adminlayout = () => {
       <div>
         <Layout>
           <Header style={{ color: "white" }}>
-            <MainHeader />
+            <AdminHeader />
           </Header>
           <Content
             style={{

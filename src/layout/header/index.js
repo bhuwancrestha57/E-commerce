@@ -6,6 +6,7 @@ import image1 from "../../image/Logo.png";
 
 const Index = () => {
   const navigate = useNavigate();
+
   const handleClick = (e) => {
     console.log("data", e);
     navigate(e);

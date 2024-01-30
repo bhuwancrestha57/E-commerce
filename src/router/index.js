@@ -7,6 +7,7 @@ import {
 import { lazy } from "react";
 import PageNotFound from "../component/PageNotFound";
 import UserDetails from "../component/user/UserDetails";
+import Category from "../component/user/Category";
 
 const Adminlayout = lazy(() => import("../layout/Adminlayout"));
 const AdminDashBoard = lazy(() => import("../component/admin/DashBoard"));
@@ -39,6 +40,7 @@ export const Routers = createBrowserRouter(
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<SignUp />} />
       </Route>
+      <Route path="/category" element={<Category />}></Route>
       <Route path="*" element={<PageNotFound />}></Route>
     </Route>
   )

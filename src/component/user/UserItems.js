@@ -16,7 +16,7 @@ const UserItems = ({ data, title }) => {
     <div style={{ paddingLeft: "25px" }}>
       <div className="text-xl font-bold p-2">{title}</div>
 
-      <div className="flex justify-start gap-10">
+      <div className="flex justify-start gap-7">
         {data?.map((item) => (
           <div key={item.id} onClick={() => handleClick(item)}>
             <Card

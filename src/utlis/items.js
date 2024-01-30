@@ -114,3 +114,14 @@ export const TrendingVendorsData = [
     id: "4",
   },
 ];
+export const auth = [
+  {
+    name: "Bhuwan Shrestha",
+    contact: "9840170728",
+    email: "bhuwan@gmail.com",
+    dob: "2054/06/07",
+    id: "1",
+    token: "15458sdsddfdfdgds/dfds",
+    type: "user",
+  },
+];

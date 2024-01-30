@@ -1,10 +1,11 @@
 import { Button, Card, DatePicker, Form, Input } from "antd";
 import React from "react";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
 
 const SignUp = () => {
+  const navigate = useNavigate();
   return (
     <div className="w-96 h-auto m-auto pt-20">
       <Card className="opacity-80 bg-white">
@@ -88,7 +89,10 @@ const SignUp = () => {
                 />
               </Form.Item>
 
-              <Button htmlType="submit">Create Account</Button>
+              <div className="flex justify-between">
+                <Button htmlType="submit">Create Account</Button>
+                <Button onClick={() => navigate("/")}>Back Home</Button>
+              </div>
             </Form>
             <div>
               Already have an account? <Link to="/auth/login">Login</Link>
