@@ -17,7 +17,7 @@ const UserDetails = () => {
           style={{
             width: 440,
           }}
-          cover={<img alt="example" src={appState.image} />}
+          cover={<img alt="example" src={appState.detail.image} />}
         >
           <div>
             <Button type="primary">Add to Cart</Button>
@@ -33,20 +33,20 @@ const UserDetails = () => {
         //   borderBlockColor: "black",
         // }}
       >
-        <div className="text-xl font-bold">{appState.name}</div>
-        <div>Price:{appState.price}</div>
-        <div>Brand:{appState.brand}</div>
+        <div className="text-xl font-bold">{appState.detail.name}</div>
+        <div>Price:{appState.detail.price}</div>
+        <div>Brand:{appState.detail.brand}</div>
 
         <div>
-          <Rate value={appState.rating} />
+          <Rate value={appState.detail.rating} />
         </div>
 
         <div>
           <EyeOutlined />
-          View:{appState.view}
+          View:{appState.detail.view}
         </div>
-        <div>Stock Available:{appState.stockItem}</div>
-        <div>Description:{appState.description}</div>
+        <div>Stock Available:{appState.detail.stockItem}</div>
+        <div>Description:{appState.detail.description}</div>
       </div>
     </div>
   );

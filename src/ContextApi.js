@@ -5,7 +5,10 @@ const AppContext = createContext();
 export const useAppContext = () => useContext(AppContext);
 
 export const AppContextProvider = ({ children }) => {
-  const [appState, setAppState] = useState({});
+  const [appState, setAppState] = useState({
+    detail: {},
+    addtocard: [],
+  });
 
   const updateState = (newState) => {
     setAppState((prevState) => ({

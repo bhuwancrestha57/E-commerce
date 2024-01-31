@@ -3,8 +3,13 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Auth, HeaderItem } from "../../utlis/items";
 import image1 from "../../image/Logo.png";
+import UserHeader from "./UserHeader";
+import { ShoppingCartOutlined } from "@ant-design/icons";
+import { useAppContext } from "../../ContextApi";
 
 const Index = () => {
+  const { appState, updateState } = useAppContext();
+  console.log("appState", appState);
   const navigate = useNavigate();
 
   const handleClick = (e) => {
@@ -38,7 +43,13 @@ const Index = () => {
           </div>
         ))}
       </div>
-      <div className="flex gap-5">
+      <div className="flex gap-5 items-center">
+        <div className="text-2xl text-white ">
+          <ShoppingCartOutlined />
+        </div>
+        <div>
+          <UserHeader />
+        </div>
         {Auth?.map((item) => (
           <div
             key={item.link}

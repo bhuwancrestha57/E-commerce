@@ -3,7 +3,7 @@ import { Avatar, Dropdown, Menu } from "antd";
 import { useNavigate } from "react-router-dom";
 import { UserAddOutlined } from "@ant-design/icons";
 
-const AdminHeader = () => {
+const UserHeader = () => {
   const navigate = useNavigate();
   const handleClick = (e) => {
     console.log("event", e);
@@ -12,7 +12,7 @@ const AdminHeader = () => {
       navigate("/auth/login");
     } else if (Number(e.key) === 1) {
       localStorage.removeItem("token");
-      navigate("/admin");
+      navigate("/");
     }
   };
 
@@ -26,7 +26,6 @@ const AdminHeader = () => {
 
   return (
     <div className="flex justify-between items-center">
-      <div>Logo</div>
       <div>
         <Dropdown overlay={menu} placement="bottom" arrow>
           <Avatar
@@ -39,7 +38,7 @@ const AdminHeader = () => {
   );
 };
 
-export default AdminHeader;
+export default UserHeader;
 const items = [
   {
     key: "1",

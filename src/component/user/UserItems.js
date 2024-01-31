@@ -4,13 +4,16 @@ import { useNavigate } from "react-router-dom";
 import { useAppContext } from "../../ContextApi";
 
 const UserItems = ({ data, title }) => {
-  const { updateState } = useAppContext();
+  const { appState, updateState } = useAppContext();
   const navigate = useNavigate();
   const handleClick = (item) => {
-    updateState(item);
+    updateState({ ...appState, detail: item });
     navigate(`/userdetail/${item.id}`);
 
     // localStorage.setItem("userdetail", JSON.stringify(item));
+  };
+  const addTocart = (item) => {
+    updateState({ ...appState, detail: [item] });
   };
   return (
     <div style={{ paddingLeft: "25px" }}>
@@ -18,21 +21,34 @@ const UserItems = ({ data, title }) => {
 
       <div className="flex justify-start gap-7">
         {data?.map((item) => (
-          <div key={item.id} onClick={() => handleClick(item)}>
+          <div key={item.id}>
             <Card
               hoverable
               style={{
-                width: 280,
+                width: 300,
               }}
-              cover={
-                <img style={{ height: 300 }} alt="example" src={item.image} />
-              }
             >
-              <div>Name:{item.name}</div>
-              <div>Price:{item.price}</div>
-              <div>Brand:{item.brand}</div>
+              <Card
+                style={{
+                  width: 300,
+                  paddingRight: "0px",
+                }}
+                cover={
+                  <img className="h-[200px]" alt="example" src={item.image} />
+                }
+                onClick={() => handleClick(item)}
+              >
+                <div>Name:{item.name}</div>
+                <div>Price:{item.price}</div>
+                <div>Brand:{item.brand}</div>
+              </Card>
               <div>
-                <Button>Add to Cart</Button>
+                <Button
+                  className="w-full bg-slate-900 text-white"
+                  onClick={() => addTocart(item)}
+                >
+                  Add to Cart
+                </Button>
               </div>
             </Card>
           </div>
