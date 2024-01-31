@@ -13,7 +13,7 @@ const UserItems = ({ data, title }) => {
     // localStorage.setItem("userdetail", JSON.stringify(item));
   };
   const addTocart = (item) => {
-    updateState({ ...appState, detail: [item] });
+    updateState({ ...appState, addtocard: [...appState.addtocard, ...[item]] });
   };
   return (
     <div style={{ paddingLeft: "25px" }}>
@@ -29,10 +29,7 @@ const UserItems = ({ data, title }) => {
               }}
             >
               <Card
-                style={{
-                  width: 300,
-                  paddingRight: "0px",
-                }}
+                style={{}}
                 cover={
                   <img className="h-[200px]" alt="example" src={item.image} />
                 }
