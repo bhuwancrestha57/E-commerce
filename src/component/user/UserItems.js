@@ -19,17 +19,17 @@ const UserItems = ({ data, title }) => {
     <div style={{ paddingLeft: "25px" }}>
       <div className="text-xl font-bold p-2">{title}</div>
 
-      <div className="flex justify-start gap-7">
+      <div className="flex justify-start gap-4">
         {data?.map((item) => (
           <div key={item.id}>
             <Card
               hoverable
               style={{
-                width: 300,
+                width: 260,
+                padding: "0px",
               }}
             >
               <Card
-                style={{}}
                 cover={
                   <img className="h-[200px]" alt="example" src={item.image} />
                 }

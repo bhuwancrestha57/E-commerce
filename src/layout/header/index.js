@@ -4,8 +4,10 @@ import { Link, useNavigate } from "react-router-dom";
 import { Auth, HeaderItem } from "../../utlis/items";
 import image1 from "../../image/Logo.png";
 import UserHeader from "./UserHeader";
-import { ShoppingCartOutlined } from "@ant-design/icons";
+
 import { useAppContext } from "../../ContextApi";
+
+import Cart from "../../component/user/cart";
 
 const Index = () => {
   const { appState, updateState } = useAppContext();
@@ -44,8 +46,8 @@ const Index = () => {
         ))}
       </div>
       <div className="flex gap-5 items-center">
-        <div className="text-2xl text-white ">
-          <ShoppingCartOutlined />
+        <div className=" text-white ">
+          <Cart />
         </div>
         <div>
           <UserHeader />
