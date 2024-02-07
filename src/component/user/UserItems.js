@@ -29,16 +29,18 @@ const UserItems = ({ data, title }) => {
                 padding: "0px",
               }}
             >
-              <Card
-                cover={
-                  <img className="h-[200px]" alt="example" src={item.image} />
-                }
-                onClick={() => handleClick(item)}
-              >
-                <div>Name:{item.name}</div>
-                <div>Price:{item.price}</div>
-                <div>Brand:{item.brand}</div>
-              </Card>
+              <div>
+                <Card
+                  cover={
+                    <img className="h-[200px]" alt="example" src={item.image} />
+                  }
+                  onClick={() => handleClick(item)}
+                >
+                  <div>Name:{item.name}</div>
+                  <div>Price:{item.price}</div>
+                  <div>Brand:{item.brand}</div>
+                </Card>
+              </div>
               <div>
                 <Button
                   className="w-full bg-slate-900 text-white"

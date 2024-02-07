@@ -42,10 +42,9 @@ export const HotproductData = [
     description: "White Color T-shirt , woolen t shirt",
     stockItem: "45",
     view: "140",
-    qty: "1",
   },
   {
-    name: "Wi-Fi Panorama Bulb Camera",
+    name: "Wi-Fi Bulb Camera",
     price: "2000",
     brand: "A to Z Supplier",
     image:
@@ -55,7 +54,6 @@ export const HotproductData = [
     description: "Wi-Fi Panorama Bulb Camera dfdfd",
     stockItem: "35",
     view: "145",
-    qty: "1",
   },
   {
     name: "Shirley doll 120cm",
@@ -68,10 +66,9 @@ export const HotproductData = [
     description: "Shirley doll sjdgsjd sgdjsdjs sjdhsjd",
     stockItem: "20",
     view: "240",
-    qty: "1",
   },
   {
-    name: "Macrame Swing (Hammock)",
+    name: "Macrame Swing",
     price: "2500",
     brand: "Company Pvt. Ltd.",
     image:
@@ -81,7 +78,6 @@ export const HotproductData = [
     description: "Macrame Swing (Hammock)sdsdsd sdsds ",
     stockItem: "5",
     view: "300",
-    qty: "1",
   },
 ];
 export const TrendingVendorsData = [
@@ -91,7 +87,7 @@ export const TrendingVendorsData = [
     brand: "ABC Supplier",
     image:
       "https://static-01.daraz.com.np/p/375d5e9011015e36458a7dbfcf0bf1e6.jpg_300x0q75.webp",
-    id: "1",
+    id: "5",
   },
   {
     name: "Wi-Fi Panorama Bulb Camera",
@@ -99,7 +95,7 @@ export const TrendingVendorsData = [
     brand: "A to Z Supplier",
     image:
       "https://static-01.daraz.com.np/p/5cd33f42f7c77bdc7467763c916462d6.jpg_300x0q75.webp",
-    id: "2",
+    id: "6",
   },
   {
     name: "Shirley doll 120cm",
@@ -107,15 +103,15 @@ export const TrendingVendorsData = [
     brand: "MNC Supplier",
     image:
       "https://static-01.daraz.com.np/p/1d9f8f9a53acd34879efefc3c1018ed4.jpg_300x0q75.webp",
-    id: "3",
+    id: "7",
   },
   {
-    name: "Macrame Swing (Hammock)",
+    name: "Macrame Swing ",
     price: "2500",
     brand: "Company Pvt. Ltd.",
     image:
       "https://static-01.daraz.com.np/p/87e635a6feec22cf7e00a8d092068c03.jpg_300x0q75.webp",
-    id: "4",
+    id: "8",
   },
 ];
 export const auth = [

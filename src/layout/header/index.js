@@ -31,7 +31,11 @@ const Index = () => {
   };
 
   React.useEffect(() => {
-    setMyOrder([...new Set(appState.addtocard)]);
+    const updatedMyOrder = [...new Set(appState.addtocard)].map((item) => ({
+      ...item,
+      qty: 1,
+    }));
+    setMyOrder(updatedMyOrder);
   }, [appState.addtocard]);
 
   const incQty = (itemIndex) => {
@@ -97,7 +101,7 @@ const Index = () => {
               <div className="gap-4 grid">
                 {myOrder?.map((item, index) => (
                   <div key={item.id} className="flex items-center gap-3">
-                    <div className="w-20 h-20">
+                    <div className="w-20 h-full">
                       <Image src={item.image} alt="noimage" />
                     </div>
                     <div>
