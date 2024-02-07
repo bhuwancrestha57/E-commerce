@@ -42,6 +42,7 @@ export const HotproductData = [
     description: "White Color T-shirt , woolen t shirt",
     stockItem: "45",
     view: "140",
+    qty: "1",
   },
   {
     name: "Wi-Fi Panorama Bulb Camera",
@@ -54,6 +55,7 @@ export const HotproductData = [
     description: "Wi-Fi Panorama Bulb Camera dfdfd",
     stockItem: "35",
     view: "145",
+    qty: "1",
   },
   {
     name: "Shirley doll 120cm",
@@ -66,6 +68,7 @@ export const HotproductData = [
     description: "Shirley doll sjdgsjd sgdjsdjs sjdhsjd",
     stockItem: "20",
     view: "240",
+    qty: "1",
   },
   {
     name: "Macrame Swing (Hammock)",
@@ -78,6 +81,7 @@ export const HotproductData = [
     description: "Macrame Swing (Hammock)sdsdsd sdsds ",
     stockItem: "5",
     view: "300",
+    qty: "1",
   },
 ];
 export const TrendingVendorsData = [

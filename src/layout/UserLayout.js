@@ -14,7 +14,7 @@ const UserLayout = () => {
     <div>
       <div>
         <Layout>
-          <Header>
+          <Header className="!sticky !top-0 " style={{ zIndex: 999 }}>
             <MainHeader />
           </Header>
           <Content
