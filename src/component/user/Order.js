@@ -1,13 +1,34 @@
-import { Avatar, Descriptions, Modal } from "antd";
+import { Avatar, Descriptions, Modal, Table } from "antd";
 import React from "react";
 
-const Order = ({ isModalOpen, setIsModalOpen, sumNetTotal, sumQtyTotal }) => {
+const Order = ({
+  isModalOpen,
+  setIsModalOpen,
+  sumNetTotal,
+  sumQtyTotal,
+  myOrder,
+}) => {
   const handleOk = () => {
     setIsModalOpen(false);
   };
   const handleCancel = () => {
     setIsModalOpen(false);
   };
+  console.log("myOrder", myOrder);
+  const columns = [
+    {
+      title: "Name",
+      dataIndex: "",
+    },
+    {
+      title: "Qty",
+      dataIndex: "",
+    },
+    {
+      title: "Price",
+      dataIndex: "",
+    },
+  ];
   return (
     <div>
       <Modal
@@ -18,6 +39,9 @@ const Order = ({ isModalOpen, setIsModalOpen, sumNetTotal, sumQtyTotal }) => {
       >
         <div>
           <div>
+            <div>
+              <Table columns={columns} />
+            </div>
             <div className="flex justify-start items-start gap-2">
               <div>
                 <Descriptions title="Total Details">

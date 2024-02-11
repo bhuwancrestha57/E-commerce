@@ -189,6 +189,7 @@ const Index = () => {
                   setIsModalOpen={(e) => setIsModalOpen(e)}
                   sumNetTotal={sumNetTotal}
                   sumQtyTotal={sumQtyTotal}
+                  myOrder={myOrder}
                 />
               )}
             </Drawer>
