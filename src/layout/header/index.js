@@ -1,24 +1,30 @@
 import React from "react";
+
 import { Link, useNavigate } from "react-router-dom";
-import { Badge, Drawer, Image, Button } from "antd";
+import { Badge, Button, Drawer, Image } from "antd";
 import {
+  DeleteOutlined,
   MinusCircleFilled,
   PlusCircleFilled,
   ShoppingCartOutlined,
-  DeleteOutlined,
 } from "@ant-design/icons";
 import { Auth, HeaderItem } from "../../utlis/items";
 import image1 from "../../image/Logo.png";
 import UserHeader from "./UserHeader";
+
 import { useAppContext } from "../../ContextApi";
+import Order from "../../component/user/Order";
 
 const Index = () => {
   const { appState, updateState } = useAppContext();
+  console.log("appState", appState);
   const [myOrder, setMyOrder] = React.useState([]);
+
   const navigate = useNavigate();
   const [open, setOpen] = React.useState(false);
 
   const handleClick = (e) => {
+    console.log("data", e);
     navigate(e);
   };
 
@@ -30,52 +36,82 @@ const Index = () => {
     setOpen(false);
   };
 
+  const handleAdd = (id) => {
+    console.log("myOrder", myOrder);
+    const updateAdddata = myOrder?.map((item) => {
+      if (id === item.id) {
+        return {
+          ...item,
+          qty: item.qty + 1,
+        };
+      } else {
+        return {
+          ...item,
+        };
+      }
+    });
+    setMyOrder(updateAdddata);
+    console.log("add", updateAdddata);
+  };
+  const handleMinus = (id) => {
+    console.log("myOrder", myOrder);
+    const updateMinusdata = myOrder?.map((item) => {
+      if (id === item.id) {
+        const minusQty = item.qty - 1 >= 1 ? item.qty - 1 : 1;
+        return {
+          ...item,
+          qty: minusQty,
+        };
+      } else {
+        return {
+          ...item,
+        };
+      }
+    });
+    setMyOrder(updateMinusdata);
+    console.log("Minus", updateMinusdata);
+  };
+  const handleDelete = (id) => {
+    const updatedDeletedata = myOrder.filter((item) => item.id !== id);
+    setMyOrder(updatedDeletedata);
+    updateState({ addtocard: updatedDeletedata });
+  };
+  const [isModalOpen, setIsModalOpen] = React.useState(false);
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const sumNetTotal = myOrder?.reduce((sum, service) => {
+    console.log("sum", sum, service);
+    return sum + parseFloat(service.price * service.qty);
+  }, 0);
+
+  const sumQtyTotal = myOrder?.reduce((sum, service) => {
+    console.log("sum", sum, service);
+    return sum + parseFloat(service.qty);
+  }, 0);
+  console.log("sumQtyTotal", sumNetTotal, sumQtyTotal);
+
   React.useEffect(() => {
-    const updatedMyOrder = [...new Set(appState.addtocard)].map((item) => ({
-      ...item,
-      qty: 1,
-    }));
-    setMyOrder(updatedMyOrder);
+    setMyOrder([...new Set(appState.addtocard)]);
   }, [appState.addtocard]);
-
-  const incQty = (itemIndex) => {
-    setMyOrder((prevOrder) => {
-      const updatedOrder = [...prevOrder];
-      updatedOrder[itemIndex].qty++;
-      return updatedOrder;
-    });
-  };
-
-  const decQty = (itemIndex) => {
-    setMyOrder((prevOrder) => {
-      const updatedOrder = [...prevOrder];
-      updatedOrder[itemIndex].qty = Math.max(
-        updatedOrder[itemIndex].qty - 1,
-        1
-      );
-      return updatedOrder;
-    });
-  };
-
-  const removeItem = (itemId) => {
-    const updatedOrder = myOrder.filter((item) => item.id !== itemId);
-    setMyOrder(updatedOrder);
-    updateState({ addtocard: updatedOrder });
-  };
-
   return (
     <div className="flex justify-between">
       <div>
         <Link to="/">
           <img
-            style={{ width: "50px", height: "60px", paddingTop: "15px" }}
+            style={{
+              width: "50px",
+              height: "60px",
+              paddingTop: "15px",
+            }}
             src={image1}
             alt=""
           />
         </Link>
       </div>
 
-      <div className="flex gap-20">
+      <div className="flex gap-10">
         {HeaderItem?.map((item) => (
           <div
             key={item.link}
@@ -99,24 +135,28 @@ const Index = () => {
           <div>
             <Drawer title="Your Cart items" onClose={onClose} open={open}>
               <div className="gap-4 grid">
-                {myOrder?.map((item, index) => (
+                {myOrder?.map((item) => (
                   <div key={item.id} className="flex items-center gap-3">
-                    <div className="w-20 h-full">
+                    <div className="w-20 h-20">
                       <Image src={item.image} alt="noimage" />
                     </div>
                     <div>
-                      <div>Name: {item.name}</div>
-                      <div>Price: {item.price}</div>
-                      <div>Brand: {item.brand}</div>
-                      <div>Qty: {item.qty}</div>
-                      <div>Total Price: {item.price * item.qty}</div>
+                      {" "}
+                      <div>Name:{item.name}</div>
+                      <div>Price:{item.price * item.qty}</div>
+                      <div>Brand:{item.brand}</div>
+                      <div>Qty:{item.qty}</div>
                       <div>
-                        <div className="flex gap-3">
-                          <button onClick={() => incQty(index)}>
-                            <PlusCircleFilled />
+                        <div className="flex gap-3 cursor-pointer">
+                          <button>
+                            <PlusCircleFilled
+                              onClick={() => handleAdd(item.id)}
+                            />
                           </button>
-                          <button onClick={() => decQty(index)}>
-                            <MinusCircleFilled />
+                          <button>
+                            <MinusCircleFilled
+                              onClick={() => handleMinus(item.id)}
+                            />
                           </button>
                         </div>
                       </div>
@@ -126,7 +166,7 @@ const Index = () => {
                         type="primary"
                         danger
                         icon={<DeleteOutlined />}
-                        onClick={() => removeItem(item.id)}
+                        onClick={() => handleDelete(item.id)}
                       >
                         Delete
                       </Button>
@@ -134,6 +174,23 @@ const Index = () => {
                   </div>
                 ))}
               </div>
+              <div>
+                <Button
+                  type="primary"
+                  className="bg-[green] w-full"
+                  onClick={showModal}
+                >
+                  Order Now
+                </Button>
+              </div>
+              {isModalOpen && (
+                <Order
+                  isModalOpen={isModalOpen}
+                  setIsModalOpen={(e) => setIsModalOpen(e)}
+                  sumNetTotal={sumNetTotal}
+                  sumQtyTotal={sumQtyTotal}
+                />
+              )}
             </Drawer>
           </div>
         )}

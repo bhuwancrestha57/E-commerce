@@ -25,7 +25,7 @@ const UserItems = ({ data, title }) => {
             <Card
               hoverable
               style={{
-                width: 260,
+                width: 285,
                 padding: "0px",
               }}
             >
