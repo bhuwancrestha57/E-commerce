@@ -12,11 +12,11 @@ const Order = ({
   const [ispayment, setPayment] = React.useState(false);
   var path = "https://uat.esewa.com.np/epay/main";
   var params = {
-    amt: 100,
+    amt: sumNetTotal,
     psc: 0,
     pdc: 0,
     txAmt: 0,
-    tAmt: 100,
+    tAmt: sumNetTotal,
     pid: "ee2c3ca1-696b-4cc5-a6be-2c40d929d453",
     scd: "EPAYTEST",
     su: "http://merchant.com.np/page/esewa_payment_success",
