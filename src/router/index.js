@@ -8,7 +8,6 @@ import { lazy } from "react";
 import PageNotFound from "../component/PageNotFound";
 import UserDetails from "../component/user/UserDetails";
 import Category from "../component/user/Category";
-import Profile from "../component/user/profile/Profile";
 
 const Adminlayout = lazy(() => import("../layout/Adminlayout"));
 const AdminDashBoard = lazy(() => import("../component/admin/DashBoard"));
@@ -21,6 +20,7 @@ const TrendingVendors = lazy(() => import("../component/user/TrendingVendors"));
 const AuthLayout = lazy(() => import("../layout/AuthLayout"));
 const Login = lazy(() => import("../component/auth/Login"));
 const SignUp = lazy(() => import("../component/auth/SignUp"));
+const Profile = lazy(() => import("../component/user/profile/Profile"));
 
 export const Routers = createBrowserRouter(
   createRoutesFromElements(

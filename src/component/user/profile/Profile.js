@@ -1,5 +1,8 @@
 import React from "react";
 import { Tabs } from "antd";
+import UserProfile from "./UserProfile";
+import Histry from "./Histry";
+import Record from "./Record";
 const onChange = (key) => {
   console.log(key);
 };
@@ -7,17 +10,17 @@ const items = [
   {
     key: "1",
     label: "Profile",
-    children: "Content of Tab Pane 1",
+    children: <UserProfile />,
   },
   {
     key: "2",
     label: "Histry",
-    children: "Content of Tab Pane 2",
+    children: <Histry />,
   },
   {
     key: "3",
     label: "Record",
-    children: "Content of Tab Pane 3",
+    children: <Record />,
   },
 ];
 
