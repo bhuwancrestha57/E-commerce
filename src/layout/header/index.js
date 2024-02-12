@@ -14,11 +14,14 @@ import UserHeader from "./UserHeader";
 
 import { useAppContext } from "../../ContextApi";
 import Order from "../../component/user/Order";
+import { Token } from "../../utlis/Storage";
 
 const Index = () => {
   const { appState, updateState } = useAppContext();
-  console.log("appState", appState);
+
   const [myOrder, setMyOrder] = React.useState([]);
+  const { token } = Token();
+  console.log("appState", Token());
 
   const navigate = useNavigate();
   const [open, setOpen] = React.useState(false);
@@ -197,9 +200,7 @@ const Index = () => {
             </Drawer>
           </div>
         )}
-        <div>
-          <UserHeader />
-        </div>
+        <div>{token && <UserHeader />}</div>
         {Auth?.map((item) => (
           <div
             key={item.link}

@@ -2,6 +2,7 @@ import React from "react";
 import { Avatar, Dropdown, Menu } from "antd";
 import { useNavigate } from "react-router-dom";
 import { UserAddOutlined } from "@ant-design/icons";
+import { LogOut } from "../../utlis/Storage";
 
 const UserHeader = () => {
   const navigate = useNavigate();
@@ -9,9 +10,9 @@ const UserHeader = () => {
     console.log("event", e);
     if (Number(e.key) === 2) {
       localStorage.removeItem("token");
-      navigate("/auth/login");
+      navigate("/");
     } else if (Number(e.key) === 1) {
-      localStorage.removeItem("token");
+      LogOut();
       navigate("/");
     }
   };
