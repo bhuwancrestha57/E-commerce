@@ -1,5 +1,6 @@
 import { Avatar, Descriptions, Modal, Table } from "antd";
 import React from "react";
+import { Post } from "./Esewa";
 
 const Order = ({
   isModalOpen,
@@ -8,7 +9,20 @@ const Order = ({
   sumQtyTotal,
   myOrder,
 }) => {
-  const [ispayment, setPayment] = React.useState();
+  const [ispayment, setPayment] = React.useState(false);
+  var path = "https://uat.esewa.com.np/epay/main";
+  var params = {
+    amt: 100,
+    psc: 0,
+    pdc: 0,
+    txAmt: 0,
+    tAmt: 100,
+    pid: "ee2c3ca1-696b-4cc5-a6be-2c40d929d453",
+    scd: "EPAYTEST",
+    su: "http://merchant.com.np/page/esewa_payment_success",
+    fu: "http://merchant.com.np/page/esewa_payment_failed",
+  };
+
   const handleOk = () => {
     setIsModalOpen(false);
   };
@@ -16,10 +30,10 @@ const Order = ({
     setIsModalOpen(false);
   };
   const handlePaymentMethod = (id) => {
+    // <Post path={path} params={params} />;
     setPayment(id);
   };
   console.log("sdsds", ispayment);
-  console.log("myOrdersss", myOrder);
 
   const Paymentmethod = [
     {
@@ -70,7 +84,6 @@ const Order = ({
       title: "Name",
       dataIndex: "name",
       key: "name",
-      //   render: () => <div>7809</div>,
     },
     {
       title: "Qty",
@@ -127,6 +140,7 @@ const Order = ({
           </div>
         </div>
       </Modal>
+      {ispayment && Post(path, params)}
     </div>
   );
 };
