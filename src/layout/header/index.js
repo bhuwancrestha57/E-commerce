@@ -29,7 +29,9 @@ const Index = () => {
   };
 
   const showDrawer = () => {
-    setOpen(true);
+    if (myOrder.length > 0) {
+      setOpen(true);
+    }
   };
 
   const onClose = () => {
@@ -124,7 +126,7 @@ const Index = () => {
       </div>
       <div className="flex gap-5 items-center">
         <div className="mt-[5px]">
-          <Badge count={myOrder.length}>
+          <Badge showZero count={myOrder.length}>
             <ShoppingCartOutlined
               className=" text-white text-2xl  "
               onClick={showDrawer}
