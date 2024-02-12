@@ -8,6 +8,7 @@ import { lazy } from "react";
 import PageNotFound from "../component/PageNotFound";
 import UserDetails from "../component/user/UserDetails";
 import Category from "../component/user/Category";
+import Profile from "../component/user/profile/Profile";
 
 const Adminlayout = lazy(() => import("../layout/Adminlayout"));
 const AdminDashBoard = lazy(() => import("../component/admin/DashBoard"));
@@ -30,6 +31,7 @@ export const Routers = createBrowserRouter(
         <Route path="contactus" element={<ContactUs />} />
         <Route path="hotproducts" element={<HotProducts />} />
         <Route path="trendingvendors" element={<TrendingVendors />} />
+        <Route path="user/profile" element={<Profile />} />
 
         <Route path="userdetail/:id" element={<UserDetails />} />
       </Route>

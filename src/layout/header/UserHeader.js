@@ -9,10 +9,11 @@ const UserHeader = () => {
   const handleClick = (e) => {
     console.log("event", e);
     if (Number(e.key) === 2) {
-      localStorage.removeItem("token");
-      navigate("/");
-    } else if (Number(e.key) === 1) {
       LogOut();
+      navigate("/user/profile");
+    } else if (Number(e.key) === 1) {
+      localStorage.removeItem("token");
+
       navigate("/");
     }
   };
