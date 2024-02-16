@@ -69,7 +69,7 @@ const UserDetails = () => {
         <div>Description:{appState.detail.description}</div>
         <div>
           <Form onFinish={handleByNow}>
-            <AntdInput initialValue={1} name="Qty" type="number" min={1} />
+            <AntdInput initialValue={1} name="Qty" type="number" />
 
             <div className=" flex justify-between items-center ">
               <div className="w-full">
