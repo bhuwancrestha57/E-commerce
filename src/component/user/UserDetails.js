@@ -1,11 +1,31 @@
 import { EyeOutlined } from "@ant-design/icons";
-import { Button, Card, Rate } from "antd";
+import { Button, Card, Form, Rate } from "antd";
 import React from "react";
 import { useAppContext } from "../../ContextApi";
+
+import { AntdInput, SaveButton } from "../common";
+import Order from "./Order";
 
 const UserDetails = () => {
   const { appState } = useAppContext();
   console.log("userdetail", appState);
+
+  const [isModalOpen, setIsModalOpen] = React.useState(false);
+  const [isValue, setIsValue] = React.useState({
+    qty: 0,
+    Price: 0,
+    name: null,
+  });
+  const handleByNow = (value) => {
+    setIsModalOpen(true);
+    setIsValue({
+      qty: value?.Qty,
+      price: appState?.detail?.price * value?.Qty,
+      name: appState?.detail?.name,
+    });
+    console.log("changed", value);
+  };
+
   // const myValue = localStorage.getItem("userdetail");
   // const data = JSON.parse(myValue);
   // console.log("userdetail", JSON.parse(myValue));
@@ -47,7 +67,38 @@ const UserDetails = () => {
         </div>
         <div>Stock Available:{appState.detail.stockItem}</div>
         <div>Description:{appState.detail.description}</div>
+        <div>
+          <Form onFinish={handleByNow}>
+            <AntdInput initialValue={1} name="Qty" type="number" min={1} />
+
+            <div className=" flex justify-between items-center ">
+              <div className="w-full">
+                <SaveButton
+                  className="bg-red text-white w-full"
+                  type="submit"
+                  name={"Buy Now"}
+                />
+              </div>
+              <div>
+                <SaveButton
+                  type="submit"
+                  className="bg-black text-white w-full"
+                  name={"Add to Cart"}
+                />
+              </div>
+            </div>
+          </Form>
+        </div>
       </div>
+      {isModalOpen && (
+        <Order
+          isModalOpen={isModalOpen}
+          setIsModalOpen={(e) => setIsModalOpen(e)}
+          sumNetTotal={isValue?.price}
+          sumQtyTotal={isValue?.qty}
+          myOrder={[isValue]}
+        />
+      )}
     </div>
   );
 };

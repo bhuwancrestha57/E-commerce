@@ -45,7 +45,11 @@ export const AntdInput = (props) => {
 
   return (
     <FormItem {...props} localrules={localrules}>
-      <Input onClick={props.onClick} onChange={props.onChange} />
+      <Input
+        onClick={props.onClick}
+        onChange={props.onChange}
+        type={props.type}
+      />
     </FormItem>
   );
 };
@@ -58,7 +62,7 @@ export const SaveButton = (props) => {
       onChange={props.onChange}
       loading={props.loading}
     >
-      Save
+      {props.name}
     </Button>
   );
 };
