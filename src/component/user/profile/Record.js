@@ -1,8 +1,84 @@
-import React from "react";
 import { Table } from "antd";
+import React from "react";
 
 const Record = () => {
+  const [tableParams, setTableParams] = React.useState({
+    current: 1,
+    pageSize: 2,
+    total: 5,
+  });
+
+  const handlePaginationChange = (paginationData) => {
+    setTableParams({
+      current: paginationData?.current,
+      pageSize: paginationData?.pageSize,
+      total: paginationData?.total,
+    });
+  };
+
+  const dataSource = [
+    {
+      key: "1",
+      name: "Mike",
+      age: 32,
+      address: "10 Downing Street",
+    },
+    {
+      key: "2",
+      name: "John",
+      age: 42,
+      address: "10 Downing Street",
+    },
+    {
+      key: "34",
+      name: "Mike",
+      age: 32,
+      address: "10 Downing Street",
+    },
+    {
+      key: "44",
+      name: "sita",
+      age: 42,
+      address: "10 Downing Street",
+    },
+    {
+      key: "55",
+      name: "Sarita",
+      age: 32,
+      address: "10 Downing Street",
+    },
+    {
+      key: "68",
+      name: "Santosh",
+      age: 42,
+      address: "10 Downing Street",
+    },
+    {
+      key: "79",
+      name: "Sanvi",
+      age: 32,
+      address: "10 Downing Street",
+    },
+    {
+      key: "85",
+      name: "Susmita",
+      age: 42,
+      address: "10 Downing Street",
+    },
+  ];
+
   const columns = [
+    {
+      title: "SN",
+      // dataIndex:'key',
+      render: (text, record, index) => {
+        return (
+          <div>
+            {(tableParams?.current - 1) * tableParams?.pageSize + (index + 1)}
+          </div>
+        );
+      },
+    },
     {
       title: "Name",
       dataIndex: "name",
@@ -18,38 +94,22 @@ const Record = () => {
       dataIndex: "address",
       key: "address",
     },
-    {
-      title: "Tags",
-      key: "tags",
-      dataIndex: "tags",
-    },
-  ];
-  const data = [
-    {
-      key: "1",
-      name: "John Brown",
-      age: 32,
-      address: "New York No. 1 Lake Park",
-      tags: ["nice", "developer"],
-    },
-    {
-      key: "2",
-      name: "Jim Green",
-      age: 42,
-      address: "London No. 1 Lake Park",
-      tags: ["loser"],
-    },
-    {
-      key: "3",
-      name: "Joe Black",
-      age: 32,
-      address: "Sydney No. 1 Lake Park",
-      tags: ["cool", "teacher"],
-    },
   ];
   return (
     <div>
-      <Table columns={columns} dataSource={data} />
+      <Table
+        dataSource={dataSource}
+        rowKey={"key"}
+        columns={columns}
+        pagination={{
+          current: tableParams.current,
+          pageSize: tableParams.pageSize,
+          total: tableParams.total,
+          showQuickJumper: true,
+          showLessItems: true,
+        }}
+        onChange={handlePaginationChange}
+      />
     </div>
   );
 };
