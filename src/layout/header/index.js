@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Link, useNavigate } from "react-router-dom";
-import { Badge, Button, Drawer, Image } from "antd";
+import { Badge, Button, Drawer, Image, message } from "antd";
 import {
   DeleteOutlined,
   MinusCircleFilled,
@@ -20,7 +20,7 @@ const Index = () => {
   const { appState, updateState } = useAppContext();
 
   const [myOrder, setMyOrder] = React.useState([]);
-  const { token } = Token();
+  const { token, name } = Token();
   console.log("appState", Token());
 
   const navigate = useNavigate();
@@ -83,7 +83,11 @@ const Index = () => {
   };
   const [isModalOpen, setIsModalOpen] = React.useState(false);
   const showModal = () => {
-    setIsModalOpen(true);
+    if (token) {
+      setIsModalOpen(true);
+    } else {
+      message.info("You are not Login please login First!");
+    }
   };
 
   const sumNetTotal = myOrder?.reduce((sum, service) => {
@@ -201,15 +205,20 @@ const Index = () => {
           </div>
         )}
         <div>{token && <UserHeader />}</div>
-        {Auth?.map((item) => (
-          <div
-            key={item.link}
-            className="text-white font-bold"
-            onClick={() => handleClick(item.link)}
-          >
-            {item.name}
-          </div>
-        ))}
+
+        {!token &&
+          Auth?.map((item) => (
+            <div
+              key={item.link}
+              className="text-white font-bold"
+              onClick={() => handleClick(item.link)}
+            >
+              {item.name}
+            </div>
+          ))}
+        <div>
+          <div className="text-white">{name}</div>
+        </div>
       </div>
     </div>
   );

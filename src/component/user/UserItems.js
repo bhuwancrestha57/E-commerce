@@ -6,6 +6,7 @@ import { useAppContext } from "../../ContextApi";
 const UserItems = ({ data, title }) => {
   const { appState, updateState } = useAppContext();
   const navigate = useNavigate();
+
   const handleClick = (item) => {
     updateState({ ...appState, detail: item });
     navigate(`/userdetail/${item.id}`);
@@ -13,8 +14,12 @@ const UserItems = ({ data, title }) => {
     // localStorage.setItem("userdetail", JSON.stringify(item));
   };
   const addTocart = (item) => {
-    updateState({ ...appState, addtocard: [...appState.addtocard, ...[item]] });
+    updateState({
+      ...appState,
+      addtocard: [...appState.addtocard, ...[item]],
+    });
   };
+
   return (
     <div style={{ paddingLeft: "25px" }}>
       <div className="text-xl font-bold p-2">{title}</div>

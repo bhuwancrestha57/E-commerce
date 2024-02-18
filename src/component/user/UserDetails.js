@@ -5,25 +5,34 @@ import { useAppContext } from "../../ContextApi";
 
 import { AntdInput, SaveButton } from "../common";
 import Order from "./Order";
+import { Token } from "../../utlis/Storage";
+import { useNavigate } from "react-router-dom";
 
 const UserDetails = () => {
   const { appState } = useAppContext();
+  const navigate = useNavigate();
+
   console.log("userdetail", appState);
 
   const [isModalOpen, setIsModalOpen] = React.useState(false);
+  const { token } = Token();
   const [isValue, setIsValue] = React.useState({
     qty: 0,
     Price: 0,
     name: null,
   });
   const handleByNow = (value) => {
-    setIsModalOpen(true);
-    setIsValue({
-      qty: value?.Qty,
-      price: appState?.detail?.price * value?.Qty,
-      name: appState?.detail?.name,
-    });
-    console.log("changed", value);
+    if (token) {
+      setIsModalOpen(true);
+      setIsValue({
+        qty: value?.Qty,
+        price: appState?.detail?.price * value?.Qty,
+        name: appState?.detail?.name,
+      });
+      console.log("changed", value);
+    } else {
+      navigate("/auth/login");
+    }
   };
 
   // const myValue = localStorage.getItem("userdetail");

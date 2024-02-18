@@ -1,8 +1,9 @@
-import { Button, Card, Form, Input } from "antd";
+import { Button, Card, Form, Input, notification } from "antd";
 import React from "react";
 
 import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../../utlis/items";
+import { LeftCircleFilled } from "@ant-design/icons";
 
 const Login = () => {
   const data = auth?.[0];
@@ -11,19 +12,29 @@ const Login = () => {
   const onFinish = (values) => {
     if (values?.user_name === data.type) {
       navigate("/");
+      notification.info({ message: "Login successfully!" });
       localStorage.setItem("token", JSON.stringify(data));
-    } else {
+    } else if (values?.user_name === "admin") {
       const admindata = auth?.map((item) => {
         return { ...item, name: values.user_name, type: "admin" };
       });
+      notification.info({ message: "Login successfully!" });
       localStorage.setItem("token", JSON.stringify(admindata?.[0]));
       navigate("/admin");
+    } else {
+      notification.info({
+        message: "Something want to wrong!",
+        placement: "top",
+      });
     }
   };
   return (
     <div className="w-96 h-auto m-auto pt-20">
       <Card className="opacity-80 bg-white">
         <div>
+          <div>
+            <LeftCircleFilled onClick={() => navigate(-1)} />
+          </div>
           <div className="text-center font-bold text-xl pb-2.5">
             <h3>Login</h3>
           </div>
@@ -56,7 +67,6 @@ const Login = () => {
 
             <div className="flex justify-between">
               <Button htmlType="submit">Login</Button>
-              <Button onClick={() => navigate("/")}>Back Home</Button>
             </div>
           </Form>
           <div>

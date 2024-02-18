@@ -1,44 +1,8 @@
 import { Avatar, Descriptions, Modal, Table } from "antd";
 import React from "react";
 import { Post } from "./Esewa";
-
-// import KhaltiCheckout from "khalti-checkout-web";
-
-// let config = {
-//   // replace this key with yours
-//   publicKey: "test_public_key_dc74e0fd57cb46cd93832aee0a390234",
-//   productIdentity: "1234567890",
-//   productName: "Drogon",
-//   productUrl: "http://gameofthrones.com/buy/Dragons",
-//   eventHandler: {
-//     onSuccess(payload) {
-//       // hit merchant api for initiating verfication
-//       console.log(payload);
-//     },
-//     // onError handler is optional
-//     onError(error) {
-//       // handle errors
-//       console.log(error);
-//     },
-//     onClose() {
-//       console.log("widget is closing");
-//     },
-//   },
-//   paymentPreference: [
-//     "KHALTI",
-//     "EBANKING",
-//     "MOBILE_BANKING",
-//     "CONNECT_IPS",
-//     "SCT",
-//   ],
-// };
-
-// let checkout = new KhaltiCheckout(config);
-// let btn = document.getElementById("payment-button");
-// btn.onclick = function () {
-//   // minimum transaction amount must be 10, i.e 1000 in paisa.
-//   checkout.show({ amount: 1000 });
-// };
+import { config } from "./Khalti";
+import KhaltiCheckout from "khalti-checkout-web";
 
 const Order = ({
   isModalOpen,
@@ -48,6 +12,8 @@ const Order = ({
   myOrder,
 }) => {
   const [ispayment, setPayment] = React.useState(false);
+  let checkout = new KhaltiCheckout(config);
+
   var path = "https://uat.esewa.com.np/epay/main";
   var params = {
     amt: sumNetTotal,
@@ -68,9 +34,13 @@ const Order = ({
     setIsModalOpen(false);
   };
   const handlePaymentMethod = (id) => {
-    if (id === "1") setPayment(id);
+    if (id === "1") {
+      setPayment(id);
+    } else if (id === "3") {
+      setPayment(id); // Assuming you want to set payment method to Khalti
+      checkout.show({ amount: 1000 }); // Show Khalti checkout
+    }
   };
-  console.log("sdsds", ispayment);
 
   const Paymentmethod = [
     {
@@ -108,7 +78,7 @@ const Order = ({
         <Avatar
           icon={
             <img
-              src="https://esewa.com.np/common/images/esewa-icon-large.png"
+              src="https://blog.khalti.com/wp-content/uploads/2021/01/khalti-icon.png"
               alt="/"
             />
           }
@@ -177,7 +147,7 @@ const Order = ({
           </div>
         </div>
       </Modal>
-      {ispayment && Post(path, params)}
+      {ispayment === "1" && Post(path, params)}
     </div>
   );
 };
