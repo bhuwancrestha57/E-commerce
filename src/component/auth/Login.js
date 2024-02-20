@@ -2,7 +2,7 @@ import { Button, Card, Form, Input, notification } from "antd";
 import React from "react";
 
 import { Link, useNavigate } from "react-router-dom";
-import { auth } from "../../utlis/items";
+import { Admin, auth } from "../../utlis/items";
 import { LeftCircleFilled } from "@ant-design/icons";
 
 const Login = () => {
@@ -15,8 +15,8 @@ const Login = () => {
       notification.info({ message: "Login successfully!" });
       localStorage.setItem("token", JSON.stringify(data));
     } else if (values?.user_name === "admin") {
-      const admindata = auth?.map((item) => {
-        return { ...item, name: values.user_name, type: "admin" };
+      const admindata = Admin?.map((item) => {
+        return { ...item, name: values.user_name };
       });
       notification.info({ message: "Login successfully!" });
       localStorage.setItem("token", JSON.stringify(admindata?.[0]));

@@ -7,6 +7,8 @@ import {
   UserOutlined,
 } from "@ant-design/icons";
 import { Breadcrumb, Layout, Menu, theme } from "antd";
+import { useNavigate } from "react-router-dom";
+import { Token } from "../utlis/Storage";
 const { Header, Content, Footer, Sider } = Layout;
 function getItem(label, key, icon, children) {
   return {
@@ -31,10 +33,18 @@ const items = [
   getItem("Files", "9", <FileOutlined />),
 ];
 const Adminlayout = () => {
+  const { token, type } = Token();
+  console.log("token", Token());
+  const navigate = useNavigate();
   const [collapsed, setCollapsed] = React.useState(false);
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
+  React.useEffect(() => {
+    if (!token || type !== "admin") {
+      navigate("/auth/login");
+    }
+  }, []);
   return (
     <div>
       <div>

@@ -129,3 +129,15 @@ export const auth = [
     type: "user",
   },
 ];
+
+export const Admin = [
+  {
+    name: " Admin Shrestha",
+    contact: "9840170728",
+    email: "admin@gmail.com",
+    dob: "2054/06/07",
+    id: "1",
+    token: "15458sdsddfdfdgds/dfds",
+    type: "admin",
+  },
+];
