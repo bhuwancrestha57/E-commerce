@@ -9,6 +9,7 @@ import {
 import { Breadcrumb, Layout, Menu, theme } from "antd";
 import { useNavigate } from "react-router-dom";
 import { Token } from "../utlis/Storage";
+import AdminHeader from "./header/AdminHeader";
 const { Header, Content, Footer, Sider } = Layout;
 function getItem(label, key, icon, children) {
   return {
@@ -53,6 +54,9 @@ const Adminlayout = () => {
             minHeight: "100vh",
           }}
         >
+          <Header style={{ color: "white" }}>
+            <AdminHeader />
+          </Header>
           <Sider
             collapsible
             collapsed={collapsed}

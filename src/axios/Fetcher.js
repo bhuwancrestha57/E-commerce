@@ -2,9 +2,8 @@
 import axios from "axios";
 import { notification } from "antd";
 
-const API_BASE_URL = "https://fakestoreapi.com/";
 const api = axios.create({
-  baseURL: API_BASE_URL,
+  baseURL: process.env.REACT_APP_API_BASE_URL,
 });
 export const get = async (endpoint) => {
   try {

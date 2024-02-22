@@ -4,30 +4,42 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Admin, auth } from "../../utlis/items";
 import { LeftCircleFilled } from "@ant-design/icons";
+import useAxiosPost from "../../axios/Uploder";
 
 const Login = () => {
-  const data = auth?.[0];
+  const { loading, data: logindata, postData } = useAxiosPost();
+  console.log("logindata", logindata);
+
+  const data = auth[0];
 
   const navigate = useNavigate();
   const onFinish = (values) => {
-    if (values?.user_name === data.type) {
-      navigate("/");
-      notification.info({ message: "Login successfully!" });
-      localStorage.setItem("token", JSON.stringify(data));
-    } else if (values?.user_name === "admin") {
-      const admindata = Admin?.map((item) => {
-        return { ...item, name: values.user_name };
-      });
-      notification.info({ message: "Login successfully!" });
-      localStorage.setItem("token", JSON.stringify(admindata?.[0]));
-      navigate("/admin");
-    } else {
-      notification.info({
-        message: "Something want to wrong!",
-        placement: "top",
-      });
-    }
+    console.log("abc", values);
+    postData("https://fakestoreapi.com/auth/login", values);
+    // if (values?.username === data.type) {
+    //   navigate("/");
+    //   notification.info({ message: "Login successfully!" });
+    //   localStorage.setItem("token", JSON.stringify(data));
+    // } else if (values?.username === "admin") {
+    //   const admindata = Admin?.map((item) => {
+    //     return { ...item, name: values.username };
+    //   });
+    //   notification.info({ message: "Login successfully!" });
+    //   localStorage.setItem("token", JSON.stringify(admindata?.[0]));
+    //   navigate("/admin");
+    // } else {
+    //   notification.info({
+    //     message: "Something want to wrong!",
+    //     placement: "top",
+    //   });
+    // }
   };
+  React.useEffect(() => {
+    if (logindata?.token) {
+      localStorage.setItem("token", JSON.stringify(logindata?.token));
+      navigate("/");
+    }
+  }, [logindata]);
   return (
     <div className="w-96 h-auto m-auto pt-20">
       <Card className="opacity-80 bg-white">
@@ -40,7 +52,7 @@ const Login = () => {
           </div>
           <Form layout="vertical" onFinish={onFinish}>
             <Form.Item
-              name={"user_name"}
+              name={"username"}
               label={"User Name"}
               rules={[
                 {
@@ -66,7 +78,9 @@ const Login = () => {
             </Form.Item>
 
             <div className="flex justify-between">
-              <Button htmlType="submit">Login</Button>
+              <Button htmlType="submit" loading={loading}>
+                Login
+              </Button>
             </div>
           </Form>
           <div>

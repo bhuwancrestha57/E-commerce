@@ -41,7 +41,7 @@ const UserItems = ({ data, title }) => {
                   }
                   onClick={() => handleClick(item)}
                 >
-                  <div>Name:{item.name}</div>
+                  <div>Name:{item.title}</div>
                   <div>Price:{item.price}</div>
                   <div>Brand:{item.brand}</div>
                 </Card>

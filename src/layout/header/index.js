@@ -204,7 +204,10 @@ const Index = () => {
             </Drawer>
           </div>
         )}
-        <div>{token && <UserHeader />}</div>
+        <div>
+          <UserHeader />
+        </div>
+        {/* <div>{token && <UserHeader />}</div> */}
 
         {!token &&
           Auth?.map((item) => (
