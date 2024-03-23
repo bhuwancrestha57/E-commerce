@@ -1,17 +1,14 @@
 import React from "react";
 import UserItems from "./UserItems";
 
-import { get } from "../../axios/Fetcher";
+import { trendingVendors } from "../../services/User";
 
 const TrendingVendors = () => {
   const [data, setData] = React.useState([]);
   React.useEffect(() => {
-    const fetchData = async () => {
-      const responseData = await get("products?limit=10");
-      console.log("dataabc", responseData);
-      setData(responseData);
-    };
-    fetchData();
+    trendingVendors().then((response) => {
+      setData(response);
+    });
   }, []);
   return (
     <div>

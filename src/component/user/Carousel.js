@@ -45,19 +45,6 @@ const Carousel = () => {
             ))}
           </div>
         </Swiper>
-
-        <div className="w-[40%] h-[500px] px-5">
-          <div>
-            <a href="/">
-              <img className="pb-5" src={b2} alt="/" />
-            </a>
-          </div>
-          <div>
-            <a href="/">
-              <img src={b3} alt="/" />
-            </a>
-          </div>
-        </div>
       </div>
     </>
   );

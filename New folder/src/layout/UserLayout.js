@@ -1,21 +1,17 @@
-import { Layout, theme } from "antd";
-import { Content, Header } from "antd/es/layout/layout";
+import { Breadcrumb, Layout, theme } from "antd";
+import { Content, Footer, Header } from "antd/es/layout/layout";
 import React from "react";
 import { Outlet } from "react-router-dom";
 import MainHeader from "./header";
-
-import UserFooter from "./footer/UserFooter";
-
 const UserLayout = () => {
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
-
   return (
     <div>
       <div>
         <Layout>
-          <Header className="!sticky !top-0 " style={{ zIndex: 999 }}>
+          <Header style={{ color: "white" }}>
             <MainHeader />
           </Header>
           <Content
@@ -23,9 +19,18 @@ const UserLayout = () => {
               padding: "0 48px",
             }}
           >
+            <Breadcrumb
+              style={{
+                margin: "16px 0",
+              }}
+            >
+              <Breadcrumb.Item>Home</Breadcrumb.Item>
+              <Breadcrumb.Item>List</Breadcrumb.Item>
+              <Breadcrumb.Item>App</Breadcrumb.Item>
+            </Breadcrumb>
             <Layout
               style={{
-                padding: "5px 0",
+                padding: "24px 0",
                 background: colorBgContainer,
                 borderRadius: borderRadiusLG,
               }}
@@ -35,6 +40,13 @@ const UserLayout = () => {
               </div>
             </Layout>
           </Content>
+          <Footer
+            style={{
+              textAlign: "center",
+            }}
+          >
+            Ant Design ©{new Date().getFullYear()} Created by Ant UED
+          </Footer>
         </Layout>
       </div>
     </div>

@@ -106,18 +106,8 @@ const Index = () => {
   }, [appState.addtocard]);
   return (
     <div className="flex justify-between">
-      <div>
-        <Link to="/">
-          <img
-            style={{
-              width: "50px",
-              height: "60px",
-              paddingTop: "15px",
-            }}
-            src={image1}
-            alt=""
-          />
-        </Link>
+      <div className="text-white text-xl">
+        <Link to="/">LOGO </Link>
       </div>
 
       <div className="flex gap-10">
